@@ -50,50 +50,66 @@ namespace HeistTwo
                 Taryn, Bre, Preston, Gus, Meg, Laurel
             };
 
-            Console.Write($"There are {rolodex.Count()} possible crew members.");
-            Console.Write("Have anyone in mind to build out the team?");
-            string name = Console.ReadLine();
-            Console.WriteLine($"What is {name}'s Speciality? \n 1.Hacker (Disables alarms) \n 2.Muscle (Disarms guards) \n 3.Lock Specialist (cracks vault)");
-            int SpecialityNumb = Int32.Parse(Console.ReadLine());
-            Console.Write($"What is {name}'s skill level (1-100)? ");
-            int skillLevel = Int32.Parse(Console.ReadLine());
-            Console.Write($"I see...What would {name} want as a cut? ");
-            int percentageCut = Int32.Parse(Console.ReadLine());
+            NewMemberQuestion();
 
-            if (SpecialityNumb == 1)
+            void NewMemberQuestion()
             {
-                Hacker NewMemb = new Hacker()
+                Console.WriteLine($"There are {rolodex.Count()} possible crew members.");
+                Console.Write("Have anyone in mind to build out the team. What's their name? ");
+                string name = Console.ReadLine();
+
+                if (name == "")
                 {
-                    Name = name,
-                    SkillLevel = skillLevel,
-                    PercentageCut = percentageCut
-                };
-                rolodex.Add(NewMemb);
-            }
-            else if (SpecialityNumb == 2)
-            {
-                Muscle NewMemb = new Muscle()
+                    Console.WriteLine("Okay, we have all our prospects");
+                }
+
+                else
                 {
-                    Name = name,
-                    SkillLevel = skillLevel,
-                    PercentageCut = percentageCut
-                };
-                rolodex.Add(NewMemb);
-            }
-            else if (SpecialityNumb == 3)
-            {
-                LockSpecialist NewMemb = new LockSpecialist()
-                {
-                    Name = name,
-                    SkillLevel = skillLevel,
-                    PercentageCut = percentageCut
-                };
-                rolodex.Add(NewMemb);
-            }
-            else
-            {
-                Console.WriteLine("That dude is fake. Are you a cop?");
-            }
+
+                    Console.WriteLine($"What is {name}'s Speciality? \n 1. Hacker (Disables alarms) \n 2. Muscle (Disarms guards) \n 3. Lock Specialist (cracks vault) ");
+                    int SpecialityNumb = Int32.Parse(Console.ReadLine());
+                    Console.Write($"What is {name}'s skill level (1-100)? ");
+                    int skillLevel = Int32.Parse(Console.ReadLine());
+                    Console.Write($"I see...What would {name} want as a cut? ");
+                    int percentageCut = Int32.Parse(Console.ReadLine());
+
+                    if (SpecialityNumb == 1)
+                    {
+                        Hacker NewMemb = new Hacker()
+                        {
+                            Name = name,
+                            SkillLevel = skillLevel,
+                            PercentageCut = percentageCut
+                        };
+                        rolodex.Add(NewMemb);
+                    }
+                    else if (SpecialityNumb == 2)
+                    {
+                        Muscle NewMemb = new Muscle()
+                        {
+                            Name = name,
+                            SkillLevel = skillLevel,
+                            PercentageCut = percentageCut
+                        };
+                        rolodex.Add(NewMemb);
+                    }
+                    else if (SpecialityNumb == 3)
+                    {
+                        LockSpecialist NewMemb = new LockSpecialist()
+                        {
+                            Name = name,
+                            SkillLevel = skillLevel,
+                            PercentageCut = percentageCut
+                        };
+                        rolodex.Add(NewMemb);
+                    }
+                    else
+                    {
+                        Console.WriteLine("That dude is fake. Are you a cop?");
+                    }
+                    NewMemberQuestion();
+                }
+            };
         }
     }
 }
