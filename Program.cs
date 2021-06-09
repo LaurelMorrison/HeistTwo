@@ -6,7 +6,8 @@ namespace HeistTwo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Hacker hacker = new Hacker();
+
         }
     }
 }
