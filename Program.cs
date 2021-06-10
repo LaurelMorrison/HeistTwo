@@ -72,7 +72,6 @@ namespace HeistTwo
                     int skillLevel = Int32.Parse(Console.ReadLine());
                     Console.Write($"I see...What would {name} want as a cut? ");
                     int percentageCut = Int32.Parse(Console.ReadLine());
-
                     if (SpecialityNumb == 1)
                     {
                         Hacker NewMemb = new Hacker()
@@ -105,11 +104,30 @@ namespace HeistTwo
                     }
                     else
                     {
-                        Console.WriteLine("That dude is fake. Are you a cop?");
+                        Console.Write("Are you a cop? The heist is off. ");
+                        return;
                     }
                     NewMemberQuestion();
                 }
             };
+
+            Random r = new Random();
+            Bank bank = new Bank()
+            {
+                AlarmScore = r.Next(0, 100),
+                VaultScore = r.Next(0, 100),
+                SecurityGuardScore = r.Next(0, 100),
+                CashOnHand = r.Next(50000, 1000000),
+            };
+            int[] BankScores = { bank.AlarmScore, bank.VaultScore, bank.SecurityGuardScore };
+
+            Recon();
+
+            void Recon()
+            {
+                Console.WriteLine($"Most secure: {BankScores.Max()}");
+            }
+
         }
     }
 }

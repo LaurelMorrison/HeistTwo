@@ -9,7 +9,7 @@ namespace HeistTwo
         public int PercentageCut { get; set; }
         public void PerformanceSkill(Bank bank, int SkillLevel)
         {
-            int BankScore = (bank.AlarmScore - SkillLevel);
+            int BankScore = (bank.VaultScore - SkillLevel);
             Console.WriteLine($"{Name} is picking the lock. Decrease the security points by {SkillLevel}");
             if (BankScore <= 0)
             {
